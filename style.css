@@ -102,11 +102,45 @@ p{
     grid-area:fivedays;
     text-align: center;
 }
+#five-days-forcast .five-days-container{
+    display: grid;
+     grid-auto-flow:row ;
+}
+#five-days-forcast .five-days-container .day-wise-container{
+    display: grid;
+    grid-template: auto/repeat(4,1fr);
+    gap: var(--spacing--regular);
+    place-items: center;
+}
+.five-days-container .day-wise-container .day{
+    text-transform: capitalize;
+    justify-self: start;
+
+}
+
+.five-days-container .day-wise-container .max-temp,.five-days-container .day-wise-container .min-temp{
+    font-size: var(--font-size-regular);
+    font-weight: var(--font-semibold);
+}
+.five-days-container .day-wise-container .min-temp{
+    opacity: 0.5;
+}
+
+.five-days-container .day-wise-container .max-temp{
+  justify-self: end;
+}
+
+
+.five-days-container .day-wise-container .icon{
+    width: 75px;
+    height: 75px;
+}
+
 #feels-like{
     grid-area:feelslike;
     text-align: center;
 }
-#humidity{
+#Humidity{
     grid-area:humidity;
     text-align: center;
 }
