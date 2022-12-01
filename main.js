@@ -50,7 +50,7 @@ let loadCurrentForecast = ({
 
 const loadHourlyForecast = ({main:{temp:tempNow},weather:[{icon:iconNow}]}, hourlyForecast) => {
 
-  const timeFormatter=Intl.DateTimeFormat("en",{
+  const timeFormatter = Intl.DateTimeFormat("en",{
     hour12:true,
     hour:"numeric"
   })
@@ -64,7 +64,7 @@ const loadHourlyForecast = ({main:{temp:tempNow},weather:[{icon:iconNow}]}, hour
       <p class="hourly-temp">${formatTemperature(tempNow)}</p>
   </article>`;
   for (let { dt_txt,icon, temp } of dataFor12Hours) {
-    innerHTML += `<article>
+    innerHTML +=`<article>
       <h3 class="time">${timeFormatter.format(new Date(dt_txt))}</h3>
      <img class="icon" src=${iconUrl(icon)} alt=""/>
       <p class="hourly-temp">${formatTemperature(temp)}</p>
