@@ -14,13 +14,13 @@ const getHourlyForecast = async ({ name: city }) => {
     `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${API_KEY}&units=metric`
   );
   const data = await response.json();
-  return data.list.map((forcast) => {
+  return data.list.map((forecast) => {
     const {
       dt,
       dt_txt,
       main: { temp, temp_max, temp_min },
       weather: [{ description, icon }],
-    } = forcast;
+    } = forecast;
 
     return { dt, dt_txt, temp, temp_max, temp_min, description, icon };
   });
@@ -34,7 +34,7 @@ let loadCurrentForecast = ({
   main: { temp, temp_max, temp_min },
   weather: [{ description }],
 }) => {
-  const currentForecastElement = document.querySelector("#current-forcast");
+  const currentForecastElement = document.querySelector("#current-forecast");
   currentForecastElement.querySelector(".city").textContent = name;
   currentForecastElement.querySelector(".temp").textContent =
     formatTemperature(temp);
@@ -115,11 +115,11 @@ const calculateDayWiseForecast=(hourlyForecast)=>{
 const loadFiveDayForecast=(hourlyForecast)=>{
   console.log(hourlyForecast);
   
-  const dayWiseForcast=calculateDayWiseForecast(hourlyForecast);
+  const dayWiseforecast=calculateDayWiseForecast(hourlyForecast);
    
   const container=document.querySelector(".five-days-container");
   let dayWiseInfo=""; 
-  Array.from(dayWiseForcast).map(([day,{temp_max,temp_min,icon}],index)=>{ 
+  Array.from(dayWiseforecast).map(([day,{temp_max,temp_min,icon}],index)=>{ 
     if(index<5){
       dayWiseInfo += `<article class="day-wise-container">
       <h3 class="day">${index===0?"Today":day}</h3>
